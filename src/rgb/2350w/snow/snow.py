@@ -8,17 +8,20 @@ Adjust SNOW_INTENSITY for more snow.
 """
 
 # Set how many LEDs you have
-NUM_LEDS = 50
+NUM_LEDS = 66
+COLOR_ORDER = plasma.COLOR_ORDER_BGR
 
 # How much snow? [bigger number = more snowflakes]
-SNOW_INTENSITY = 0.0002
+# SNOW_INTENSITY = 0.0002 # original
+SNOW_INTENSITY = 0.0005
 
 # Change RGB colours here (RGB colour picker: https://g.co/kgs/k2Egjk )
 BACKGROUND_COLOUR = [30, 50, 50]  # dim blue
 SNOW_COLOUR = [240, 255, 255]  # bluish white
 
 # how quickly current colour changes to target colour [1 - 255]
-FADE_UP_SPEED = 255  # abrupt change for a snowflake
+# FADE_UP_SPEED = 255  # original - abrupt change for a snowflake
+FADE_UP_SPEED = 125  # less abrupt change for a snowflake
 FADE_DOWN_SPEED = 1
 
 
@@ -44,7 +47,7 @@ current_leds = [[0] * 3 for i in range(NUM_LEDS)]
 target_leds = [[0] * 3 for i in range(NUM_LEDS)]
 
 # set up the WS2812 / NeoPixel™ LEDs
-led_strip = plasma.WS2812(NUM_LEDS, color_order=plasma.COLOR_ORDER_RGB)
+led_strip = plasma.WS2812(NUM_LEDS, color_order=COLOR_ORDER)
 
 # start updating the LED strip
 led_strip.start()

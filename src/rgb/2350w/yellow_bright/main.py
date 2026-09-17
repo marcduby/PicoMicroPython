@@ -15,11 +15,21 @@ URL = 'http://api.thingspeak.com/channels/1417/field/2/last.json'
 UPDATE_INTERVAL = 120  # refresh interval in secs. Be nice to free APIs!
 
 # Set how many LEDs you have
-NUM_LEDS = 50
+NUM_LEDS = 66
+SPEED_COLOR = 0.1
 
 # Set the brightness
 BRIGHTNESS = 0.5
+# COLOR_ORDER = plasma.COLOR_ORDER_RGB
+COLOR_ORDER = plasma.COLOR_ORDER_BGR
 
+# colors
+COLOR_ORANGE = 30
+COLOR_GOLDEN_ORANGE = 40
+COLOR_YELLOW_ORANGE = 50
+COLOR_YELLOW = 60
+COLOR_GREEN = 140
+COLOR_SKY_BLUE = 200
 
 # if no wifi connection, you get spooky rainbows. Bwahahaha!
 def wifi_failed(message=""):
@@ -34,9 +44,9 @@ def wifi_message(wifi, message):
 
 def spooky_rainbows():
     print('SPOOKY RAINBOWS!')
-    HUE_START = 30  # orange
-    HUE_END = 140  # green
-    SPEED = 0.3  # bigger = faster (harder, stronger)
+    HUE_START = COLOR_YELLOW_ORANGE
+    HUE_END = COLOR_SKY_BLUE
+    SPEED = SPEED_COLOR # 0.3  # bigger = faster (harder, stronger)
 
     distance = 0.0
     direction = SPEED
@@ -69,7 +79,7 @@ def hex_to_rgb(hex):
 pico_led = Pin('LED', Pin.OUT)
 
 # set up the WS2812 / NeoPixel™ LEDs
-led_strip = plasma.WS2812(NUM_LEDS, color_order=plasma.COLOR_ORDER_RGB)
+led_strip = plasma.WS2812(NUM_LEDS, color_order=COLOR_ORDER)
 
 # start updating the LED strip
 led_strip.start()
