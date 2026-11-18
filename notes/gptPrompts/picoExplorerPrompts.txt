@@ -1,0 +1,26 @@
+
+
+I have a raspberry pico attached to a pico explorer base
+in the src/explorer/test/ directory, write a test.py file 
+to make the pico display the time on the LCD screen attached to the explorer base board\
+let me know if there are any issues
+
+  I have created src/explorer/test/test.py to display the current time and date centered on the Pico Explorer Base's 240x240 IPS LCD screen.
+  
+  ### Things / Potential Issues to Keep in Mind
+  
+  1. Pimoroni MicroPython Firmware Required:
+      • The script uses from picographics import PicoGraphics, DISPLAY_PICO_EXPLORER, which comes bundled with Pimoroni's custom MicroPython build (not standard     
+      upstream MicroPython).
+      • Note: If you are running very old Pimoroni firmware (pre-2022), it used the deprecated picoexplorer module instead of picographics.
+  2. Setting the Real-Time Clock (RTC):
+      • The Raspberry Pi Pico does not have a battery-backed RTC onboard. When powered on standalone (without a host computer), machine.RTC() resets to 2021-01-01  
+      00:00:00.
+      • If running via Thonny or mpremote: Thonny automatically syncs the Pico's RTC from your computer when connecting (or you can run mpremote rtc --set).        
+      • If running standalone: You will need either a Pico W / Pico 2 W (to sync time over Wi-Fi via ntptime.settime()) or an external I2C RTC breakout (such as the
+      Pimoroni RV3028 plugged into the Explorer Base's GP20/GP21 I2C header, similar to src/rgb/2350w/original/plasma_stick/moon_rtc.py:29-48).
+  3. LCD Backlight Control:
+      • On the Pico Explorer Base hardware, the LCD backlight is wired directly to 3V3 (always on) rather than a PWM GPIO pin, so display.set_backlight() has no 
+      effect on this board. 
+
+

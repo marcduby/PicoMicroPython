@@ -1,0 +1,5 @@
+
+
+- mpremote fs cp temperature_screen.py :main.py
+- mpremote reset 
+
