@@ -3,3 +3,7 @@
 - mpremote fs cp temperature_screen.py :main.py
 - mpremote reset 
 
+
+
+https://www.instructables.com/Raspberry-Pi-Pico-Pico-Explorer-Workout/
+
